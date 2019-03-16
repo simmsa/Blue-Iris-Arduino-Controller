@@ -32,5 +32,5 @@ void loop() {
         Serial.print(0);
         state = OFF;
     }
-
+    delay(500);
 }
