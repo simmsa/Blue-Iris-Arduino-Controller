@@ -6,7 +6,7 @@
 #define OFF 0
 
 bool switchPressed() {
-    return digtalRead(SWITCH_INPUT) == 0;
+    return digitalRead(SWITCH_INPUT) == 0;
 }
 
 bool state = OFF;
