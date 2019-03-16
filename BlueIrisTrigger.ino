@@ -24,7 +24,7 @@ void setup() {
 void loop() {
     bool switchStatus = switchPressed();
     if(switchStatus && state == OFF) {
-        Serial.print(2);
+        Serial.print(128);
         digitalWrite(LED_PIN, HIGH);
         state = ON;
     } else if (!switchStatus && state == ON){
