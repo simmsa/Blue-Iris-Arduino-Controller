@@ -30,6 +30,7 @@ void loop() {
     } else if (!switchStatus && state == ON){
         digitalWrite(LED_PIN, LOW);
         Serial.print(0);
+        state = OFF;
     }
 
 }
