@@ -27,7 +27,7 @@ void loop() {
         Serial.print(2);
         digitalWrite(LED_PIN, HIGH);
         state = ON;
-    } else if (!switchStatus && state = ON){
+    } else if (!switchStatus && state == ON){
         digitalWrite(LED_PIN, LOW);
         Serial.print(0);
     }
