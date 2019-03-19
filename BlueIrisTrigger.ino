@@ -1,6 +1,6 @@
 #define LED_PIN 13
 #define SWITCH_INPUT A0
-#define SPEAKER_PIN 9
+#define SPEAKER_PIN 3
 
 #define ON 1
 #define OFF 0
