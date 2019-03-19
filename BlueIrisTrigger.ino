@@ -9,6 +9,10 @@ bool switchPressed() {
     return digitalRead(SWITCH_INPUT) == 0;
 }
 
+void stopBlueIrisRecording() { Serial.write(0); }
+
+bool switchPressed() { return digitalRead(SWITCH_INPUT) == 0; }
+
 bool state = OFF;
 
 void setup() {
@@ -20,7 +24,6 @@ void setup() {
     // works...
     Serial.begin(9600);
     state = OFF;
-    
 }
 
 void loop() {
