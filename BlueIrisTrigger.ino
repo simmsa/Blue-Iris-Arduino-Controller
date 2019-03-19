@@ -16,6 +16,8 @@ void setup() {
     pinMode(SPEAKER_PIN, OUTPUT);
     pinMode(SWITCH_INPUT, INPUT);
 
+    // I don't know why or where this baud rate is defined by Blue Iris, but it
+    // works...
     Serial.begin(9600);
     state = OFF;
     
