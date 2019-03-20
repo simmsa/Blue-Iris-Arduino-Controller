@@ -40,8 +40,11 @@ void setup() {
 
 void loop() {
     bool switchStatus = switchPressed();
-    if(switchStatus && state == OFF) {
-        Serial.print(1);
+    if (switchStatus && state == OFF) {
+        // To start recording on a camera:
+        // Set camera properties -> triggers -> global input dio bits to this
+        // number
+        startBlueIrisRecording(1);
         digitalWrite(LED_PIN, HIGH);
         state = ON;
     } else if (!switchStatus && state == ON){
