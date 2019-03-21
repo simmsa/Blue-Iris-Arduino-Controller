@@ -48,7 +48,11 @@ void loop() {
         digitalWrite(LED_PIN, HIGH);
         tone(SPEAKER_PIN, 440);
         state = ON;
-    } else if (!switchStatus && state == ON){
+    } else if (!switchStatus && state == ON) {
+        // This doesn't stop blue iris recording, but does tell blue iris to be
+        // ready for the next trigger. Forgetting to do this stops all
+        // triggers to stop working
+        stopBlueIrisRecording();
         digitalWrite(LED_PIN, LOW);
         noTone(SPEAKER_PIN);
         state = OFF;
