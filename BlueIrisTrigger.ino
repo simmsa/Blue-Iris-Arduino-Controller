@@ -46,10 +46,11 @@ void loop() {
         // number
         startBlueIrisRecording(1);
         digitalWrite(LED_PIN, HIGH);
+        tone(SPEAKER_PIN, 440);
         state = ON;
     } else if (!switchStatus && state == ON){
         digitalWrite(LED_PIN, LOW);
-        Serial.print(0);
+        noTone(SPEAKER_PIN);
         state = OFF;
     }
     delay(500);
