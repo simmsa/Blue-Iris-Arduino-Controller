@@ -81,4 +81,6 @@ void loop() {
             blueIrisIsRecordingTimer = 0;
         }
     }
+    // Try to slow down the loop to improve reliability
+    delay(1);
 }
