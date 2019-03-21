@@ -26,6 +26,8 @@ void stopBlueIrisRecording() { Serial.write(0); }
 bool switchPressed() { return digitalRead(SWITCH_INPUT) == 0; }
 
 bool state = OFF;
+unsigned long blueIrisIsRecordingTimer = 0;
+unsigned long blueIrisIsRecordingLEDOnTime = 10 * 1000;
 
 void setup() {
     pinMode(LED_PIN, OUTPUT);
@@ -57,5 +59,26 @@ void loop() {
         noTone(SPEAKER_PIN);
         state = OFF;
     }
-    delay(500);
+
+    // Read the serial input and if there is any, turn on the led
+    // Blue Iris sends out a dio bit thing in the:
+    // camera properties -> alerts -> dio trigger setting
+    // Right now this turns on the led if there is any serial input, but can be
+    // upgraded to react to specific dio bits, if I can figure out what the
+    // actual output of blue iris is
+    if (Serial.available()) {
+        // Burn off the serial input
+        Serial.read();
+        blueIrisIsRecordingTimer = millis();
+        digitalWrite(LED_PIN, HIGH);
+    }
+
+    // Turning on the led if blue iris sends a serial output
+    if (blueIrisIsRecordingTimer != 0) {
+        if (millis() - blueIrisIsRecordingTimer >
+            blueIrisIsRecordingLEDOnTime) {
+            digitalWrite(LED_PIN, LOW);
+            blueIrisIsRecordingTimer = 0;
+        }
+    }
 }
